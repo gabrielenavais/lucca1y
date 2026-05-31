@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Save the Date · Lucca 1 Aninho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --honey:       #F5C842;
+      --honey-light: #FFF3C4;
+      --honey-pale:  #FFF8ED;
+      --cream:       #FFFDF7;
+      --amber:       #E8A020;
+      --amber-vib:   #F5B830;
+      --amber-txt:   #C8860A;
+      --brown:       #7A4A00;
+      --brown-light: #B07B30;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--honey-pale);
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    /* ─── BACKGROUND PATTERN ─────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(245,200,66,.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(232,160,32,.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255,243,196,.25) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* honeycomb dots background */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(245,200,66,.22) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── PAGE WRAPPER ───────────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+
+    /* ─── CARD ───────────────────────────────────────────────── */
+    .card {
+      background: var(--cream);
+      border: 2.5px solid var(--honey);
+      border-radius: 32px;
+      max-width: 500px;
+      width: 100%;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: cardIn .9s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(32px) scale(.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* inner glow rim */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 30px;
+      box-shadow: inset 0 0 40px rgba(245,200,66,.12);
+      pointer-events: none;
+    }
+
+    /* ─── CORNER DECOR ───────────────────────────────────────── */
+    .corner {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      opacity: .18;
+    }
+    .corner-tl { top: 12px; left: 12px; }
+    .corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+    .corner-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+    .corner-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+    /* ─── TAG ────────────────────────────────────────────────── */
+    .tag {
+      display: inline-block;
+      background: var(--honey);
+      color: var(--brown);
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 5px 20px;
+      border-radius: 50px;
+      margin-bottom: 1.6rem;
+      animation: fadeUp .7s .2s both;
+    }
+
+    /* ─── BEAR ───────────────────────────────────────────────── */
+    .bear-wrap {
+      margin: 0 auto 1.4rem;
+      width: 100px;
+      animation: bearBounce 3s ease-in-out infinite, fadeUp .7s .3s both;
+    }
+
+    @keyframes bearBounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    .announce {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--amber-txt);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: fadeUp .7s .35s both;
+    }
+
+    .name {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 68px;
+      font-weight: 800;
+      color: var(--brown);
+      line-height: .95;
+      margin: .1rem 0 .2rem;
+      animation: fadeUp .7s .4s both;
+    }
+
+    .turns-one {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--amber-txt);
+      margin-bottom: 1.8rem;
+      animation: fadeUp .7s .45s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────────── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 auto 1.8rem;
+      max-width: 280px;
+      animation: fadeUp .7s .5s both;
+    }
+    .divider-line { flex: 1; height: 1.5px; background: var(--honey); border-radius: 2px; }
+    .divider-diamond {
+      width: 10px; height: 10px;
+      background: var(--honey);
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    /* ─── SAVE THE DATE headline ─────────────────────────────── */
+    .std-label {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--amber-txt);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+      animation: fadeUp .7s .55s both;
+    }
+
+    /* ─── DATE BOX ───────────────────────────────────────────── */
+    .date-box {
+      background: var(--honey-light);
+      border: 2px solid var(--honey);
+      border-radius: 20px;
+      padding: 1.4rem 2rem;
+      display: inline-block;
+      margin-bottom: 1.8rem;
+      min-width: 230px;
+      animation: fadeUp .7s .6s both;
+      transition: transform .25s ease, box-shadow .25s ease;
+      cursor: default;
+    }
+    .date-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(245,200,66,.35);
+    }
+
+    .date-value {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--brown);
+      line-height: 1;
+    }
+    .date-year {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--amber-txt);
+      letter-spacing: .06em;
+      margin-top: 2px;
+    }
+
+    /* ─── AWAIT TEXT ─────────────────────────────────────────── */
+    .await-text {
+      font-size: 15px;
+      color: var(--brown-light);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      animation: fadeUp .7s .7s both;
+    }
+    .await-text strong { color: var(--amber-txt); font-weight: 700; }
+
+    /* ─── PAW ROW ────────────────────────────────────────────── */
+    .paw-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      animation: fadeUp .7s .8s both;
+    }
+    .paw-row svg {
+      opacity: .3;
+      transition: opacity .2s;
+    }
+    .paw-row svg:hover { opacity: .7; }
+
+    /* ─── FLOATING HONEYS ────────────────────────────────────── */
+    .floater {
+      position: fixed;
+      pointer-events: none;
+      font-size: 22px;
+      opacity: 0;
+      animation: floatUp linear infinite;
+      z-index: 0;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: .55; }
+      90%  { opacity: .55; }
+      100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .card { padding: 2.5rem 1.5rem; border-radius: 24px; }
+      .name { font-size: 52px; }
+      .date-value { font-size: 42px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating emojis -->
+  <span class="floater" style="left:8%;  animation-duration:9s;  animation-delay:0s;">🍯</span>
+  <span class="floater" style="left:22%; animation-duration:12s; animation-delay:2s;">🐝</span>
+  <span class="floater" style="left:55%; animation-duration:10s; animation-delay:4s;">🍯</span>
+  <span class="floater" style="left:75%; animation-duration:14s; animation-delay:1s;">🐝</span>
+  <span class="floater" style="left:90%; animation-duration:11s; animation-delay:6s;">🍯</span>
+
+  <div class="page">
+    <div class="card">
+
+      <!-- corner decor -->
+      <svg class="corner corner-tl" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5" fill="#F5C842"/>
+        <circle cx="20" cy="5" r="3" fill="#F5C842"/>
+        <circle cx="5" cy="20" r="3" fill="#F5C842"/>
+        <path d="M2 30 Q15 2 30 2" stroke="#F5C842" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+      </svg>
+      <svg class="corner corner-tr" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5" fill="#F5C842"/>
+        <circle cx="20" cy="5" r="3" fill="#F5C842"/>
+        <circle cx="5" cy="20" r="3" fill="#F5C842"/>
+        <path d="M2 30 Q15 2 30 2" stroke="#F5C842" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+      </svg>
+      <svg class="corner corner-bl" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5" fill="#F5C842"/>
+        <circle cx="20" cy="5" r="3" fill="#F5C842"/>
+        <circle cx="5" cy="20" r="3" fill="#F5C842"/>
+        <path d="M2 30 Q15 2 30 2" stroke="#F5C842" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+      </svg>
+      <svg class="corner corner-br" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="5" fill="#F5C842"/>
+        <circle cx="20" cy="5" r="3" fill="#F5C842"/>
+        <circle cx="5" cy="20" r="3" fill="#F5C842"/>
+        <path d="M2 30 Q15 2 30 2" stroke="#F5C842" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+      </svg>
+
+      <!-- tag -->
+      <div class="tag">✦ Save the date ✦</div>
+
+      <!-- bear illustration -->
+      <div class="bear-wrap">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- ears -->
+          <circle cx="22" cy="25" r="14" fill="#E8A020"/>
+          <circle cx="78" cy="25" r="14" fill="#E8A020"/>
+          <circle cx="22" cy="25" r="9"  fill="#F5B830"/>
+          <circle cx="78" cy="25" r="9"  fill="#F5B830"/>
+          <!-- head -->
+          <circle cx="50" cy="57" r="33" fill="#F5B830"/>
+          <!-- snout -->
+          <ellipse cx="50" cy="66" rx="15" ry="11" fill="#E8A020"/>
+          <!-- eyes -->
+          <circle cx="39" cy="49" r="5.5" fill="#7A4A00"/>
+          <circle cx="61" cy="49" r="5.5" fill="#7A4A00"/>
+          <circle cx="40.5" cy="47.5" r="2"   fill="white"/>
+          <circle cx="62.5" cy="47.5" r="2"   fill="white"/>
+          <!-- nose -->
+          <ellipse cx="50" cy="63" rx="6" ry="4" fill="#C8860A"/>
+          <!-- mouth -->
+          <path d="M44 69 Q50 74 56 69" fill="none" stroke="#7A4A00" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- cheeks -->
+          <circle cx="33" cy="60" r="5" fill="#F0A030" opacity=".45"/>
+          <circle cx="67" cy="60" r="5" fill="#F0A030" opacity=".45"/>
+        </svg>
+      </div>
+
+      <!-- text -->
+      <p class="announce">É chegando o grande dia de</p>
+      <h1 class="name">Lucca</h1>
+      <p class="turns-one">está completando 1 aninho! 🍯</p>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <p class="std-label">📅 Guarda essa data</p>
+
+      <div class="date-box">
+        <div class="date-value">10/10</div>
+        <div class="date-year">2026</div>
+      </div>
+
+      <p class="await-text">
+        Em breve você receberá todos os detalhes.<br>
+        Fique ligado — vai ser <strong>muito especial!</strong> 🐻
+      </p>
+
+      <div class="paw-row">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7A4A00" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="12" cy="16.5" rx="5.5" ry="4.5"/><circle cx="7" cy="10" r="2.5"/>
+          <circle cx="12" cy="7.5" r="2.5"/><circle cx="17" cy="10" r="2.5"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7A4A00" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="12" cy="16.5" rx="5.5" ry="4.5"/><circle cx="7" cy="10" r="2.5"/>
+          <circle cx="12" cy="7.5" r="2.5"/><circle cx="17" cy="10" r="2.5"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#7A4A00" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="12" cy="16.5" rx="5.5" ry="4.5"/><circle cx="7" cy="10" r="2.5"/>
+          <circle cx="12" cy="7.5" r="2.5"/><circle cx="17" cy="10" r="2.5"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
